@@ -1,15 +1,14 @@
 package config
 
 import (
-	"os"
 	"testing"
 )
 
 func TestNewConfig(t *testing.T) {
-	// Override HOME to use temp dir for UserConfigDir
+	// Isolate UserConfigDir: HOME covers macOS, XDG_CONFIG_HOME covers Linux.
 	tmpDir := t.TempDir()
-	os.Setenv("XDG_CONFIG_HOME", tmpDir)
-	defer os.Unsetenv("XDG_CONFIG_HOME")
+	t.Setenv("HOME", tmpDir)
+	t.Setenv("XDG_CONFIG_HOME", tmpDir)
 
 	cfg := New()
 	if cfg == nil {
