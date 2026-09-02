@@ -1,6 +1,6 @@
 module github.com/maccavelli/mcp-server-filesystem
 
-go 1.26.5
+go 1.26.6
 
 require (
 	github.com/bmatcuk/doublestar/v4 v4.8.1
